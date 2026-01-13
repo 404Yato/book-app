@@ -61,11 +61,8 @@ def search_books(query: str, sort: str = "42_price-asc", max_pages: int = 1) -> 
             if title_elem and author_elem and isbn_elem:
                 title = title_elem
                 author = author_elem
-                isbn = isbn_elem
                 
-                yield Models.Book(title=title, author=author, isbn=isbn)
+                yield Models.Book(title=title, author=[author])
         
         
         time.sleep(request_delay)
-for book in search_books("Dostoyevski", max_pages=5):
-    print(book)
