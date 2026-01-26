@@ -1,0 +1,77 @@
+[
+  {
+    "key": "/languages/eng",
+    "en_name": "English",
+    "es_name": "Inglés"
+  },
+  {
+    "key": "/languages/ger",
+    "en_name": "German / Deutsch",
+    "es_name": "Alemán"
+  },
+  {
+    "key": "/languages/fre",
+    "en_name": "French / français",
+    "es_name": "Francés"
+  },
+  {
+    "key": "/languages/spa",
+    "en_name": "Spanish / español",
+    "es_name": "Español"
+  },
+  {
+    "key": "/languages/rus",
+    "en_name": "Russian / Русский язык",
+    "es_name": "Ruso"
+  },
+  {
+    "key": "/languages/ita",
+    "en_name": "Italian",
+    "es_name": "Italiano"
+  },
+  {
+    "key": "/languages/chi",
+    "en_name": "Chinese",
+    "es_name": "Chino"
+  },
+  {
+    "key": "/languages/jpn",
+    "en_name": "Japanese",
+    "es_name": "Japonés"
+  },
+  {
+    "key": "/languages/ara",
+    "en_name": "Arabic",
+    "es_name": "Árabe"
+  },
+  {
+    "key": "/languages/por",
+    "en_name": "Portuguese",
+    "es_name": "Portugués"
+  },
+  {
+    "key": "/languages/heb",
+    "en_name": "Hebrew",
+    "es_name": "Hebreo"
+  },
+  {
+    "key": "/languages/kor",
+    "en_name": "Korean",
+    "es_name": "Coreano"
+  },
+  {
+    "key": "/languages/lat",
+    "en_name": "Latin",
+    "es_name": "Latín"
+  },
+  {
+    "key": "/languages/dut",
+    "en_name": "Dutch",
+    "es_name": "Neerlandés"
+  },
+  {
+    "key": "/languages/pol",
+    "en_name": "Polish",
+    "es_name": "Polaco"
+  }
+]
