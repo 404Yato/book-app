@@ -29,14 +29,12 @@ def search_editions(work_id: str) -> list['Models.Edition']:
     response = requests.get(API_EDITIONS_URL)
     data = response.json()
     editions = []
-    #print(data)
     for i in data.get("entries", []):
         languages = []
         for lang in i.get("languages", []):
-            print(lang)
             key = lang.get("key")
             if key:
-                languages.append(key.split("/")[-1])
+                languages.append(key)
         edition = Models.Edition(
             work_id = work_id,
             isbn_13 = i.get("isbn_13", ['Not Found']),
