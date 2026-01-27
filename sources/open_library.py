@@ -16,10 +16,17 @@ def search_works(query: str, author: str = None, mode: str = "everything") -> li
     books = []
     for i in data.get("docs", []):
         #book = Models.Book(title = i["title"], author = i.get("author_name", ["Uknown Author"]), language = i.get("language", ["Uknown Language"]))
-        #API_WORK_URL = f"{API_BASE_URL}{i['key']}.json"
-        #response_work = requests.get(API_WORK_URL)
-        #data_work = response_work.json()
-        book = Models.Work(work_id = i["key"], title = i["title"], authors = i.get("author_name", ["Uknown Author"]), first_publish_year = i.get("first_publish_year", None))
+        # API_WORK_URL = f"{API_BASE_URL}{i['key']}.json"
+        # response_work = requests.get(API_WORK_URL)
+        # data_work = response_work.json()
+        # raw_description = data_work.get("description")
+        # description = (
+        #     raw_description.get("value")
+        #     if isinstance(raw_description, dict)
+        #     else raw_description
+        # )
+        book = Models.Work(work_id = i["key"], title = i["title"], authors = i.get("author_name", ["Uknown Author"]),
+                            first_publish_year = i.get("first_publish_year", None))
         books.append(book)
     return books
 

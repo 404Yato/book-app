@@ -10,7 +10,6 @@ class Work(BaseModel):
     title: str
     authors: list[str] = []
     first_publish_year: int | None = None
-    description: str | None = None
 
 class Language(BaseModel):
     key: str
