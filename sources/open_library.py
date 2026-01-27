@@ -25,14 +25,16 @@ def search_works(query: str, author: str = None, mode: str = "everything") -> li
         #     if isinstance(raw_description, dict)
         #     else raw_description
         # )
-        book = Models.Work(work_id = i["key"], title = i["title"], authors = i.get("author_name", ["Uknown Author"]),
+        book = Models.Work(work_id = i["key"][1:] if i["key"][1:] else i["key"],
+                            title = i["title"],
+                            authors = i.get("author_name", ["Uknown Author"]),
                             first_publish_year = i.get("first_publish_year", None))
         books.append(book)
     return books
 
 def search_editions(work_id: str) -> list['Models.Edition']:
     API_BASE_URL = "https://openlibrary.org"
-    API_EDITIONS_URL = f"{API_BASE_URL}{work_id}/editions.json"
+    API_EDITIONS_URL = f"{API_BASE_URL}/{work_id}/editions.json"
     response = requests.get(API_EDITIONS_URL)
     data = response.json()
     editions = []
