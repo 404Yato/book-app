@@ -2,7 +2,8 @@ import sources as Sources
 import utils as Utils
 import core.models as Models
 
-books = Sources.open_library.search_works("Un mundo feliz", "Aldous Huxley")
+books = Sources.open_library.search_works("El Resplandor", "Stephen King")
+languages = Utils.load_files.load_language()
 
 for b in books:
     print(f"ID de la obra: {b.work_id}")
@@ -21,7 +22,7 @@ for b in books:
     print("Ediciones:")
     for e in editions:
         print(f"  ISBN-13: {','.join(e.isbn_13)}") if e.isbn_13 else None
-        print(f"  Idioma/s: {','.join(e.language)}") if e.language else None
+        print(f"  Idioma/s: {','.join(e.resolve_languages(languages))}") if e.language else None
         print(f"  Editorial/es: {','.join(e.publishers)}") if e.publishers else None
         print(f"  Fecha de publicación: {e.publish_date}") if e.publish_date else None
         print("  " + "-" * 20)
