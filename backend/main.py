@@ -10,7 +10,7 @@
 #     print(f"Título: {b.title}")
 #     print(f"Autor/es: {','.join(b.authors)}")
 #     print(f"Año de primera publicación: {b.first_publish_year}")
-#     print(f"Descripción: {b.description}") if b.description else None
+#     #print(f"Descripción: {b.description}") if b.description else None
 #     print("-" * 40)
 
 #     editions = Sources.open_library.search_editions(b.work_id)
@@ -51,7 +51,7 @@ app = FastAPI(title="Book Search API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

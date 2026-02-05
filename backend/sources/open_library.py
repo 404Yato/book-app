@@ -11,26 +11,33 @@ def search_works(query: str, author: str = None, mode: str = "everything") -> li
         'author': author,
         'mode': mode}
     response = requests.get(API_SEARCH_URL, params=params)
-    data = response.json()
-    print(response.url)
-    books = []
-    for i in data.get("docs", []):
-        #book = Models.Book(title = i["title"], author = i.get("author_name", ["Uknown Author"]), language = i.get("language", ["Uknown Language"]))
-        # API_WORK_URL = f"{API_BASE_URL}{i['key']}.json"
-        # response_work = requests.get(API_WORK_URL)
-        # data_work = response_work.json()
-        # raw_description = data_work.get("description")
-        # description = (
-        #     raw_description.get("value")
-        #     if isinstance(raw_description, dict)
-        #     else raw_description
-        # )
-        book = Models.Work(work_id = i["key"][1:] if i["key"][1:] else i["key"],
-                            title = i["title"],
-                            authors = i.get("author_name", ["Uknown Author"]),
-                            first_publish_year = i.get("first_publish_year", None))
-        books.append(book)
-    return books
+    if response.status_code != 200:
+        return {"error": f"Error {response.status_code} desde OpenLibrary"}
+    try:
+        data = response.json()
+        print(response.url)
+        books = []
+        for i in data.get("docs", []):
+            #book = Models.Book(title = i["title"], author = i.get("author_name", ["Uknown Author"]), language = i.get("language", ["Uknown Language"]))
+            # API_WORK_URL = f"{API_BASE_URL}{i['key']}.json"
+            # response_work = requests.get(API_WORK_URL)
+            # data_work = response_work.json()
+            # raw_description = data_work.get("description")
+            # description = (
+            #     raw_description.get("value")
+            #     if isinstance(raw_description, dict)
+            #     else raw_description
+            # )
+            book = Models.Work(work_id = i["key"][1:] if i["key"][1:] else i["key"],
+                                title = i["title"],
+                                authors = i.get("author_name", ["Uknown Author"]),
+                                first_publish_year = i.get("first_publish_year", None))
+            books.append(book)
+        return books
+    
+    except ValueError:
+        # No se pudo parsear JSON
+        return {"error": "Respuesta no es JSON válido"}
 
 def search_editions(work_id: str) -> list['Models.Edition']:
     API_BASE_URL = "https://openlibrary.org"
